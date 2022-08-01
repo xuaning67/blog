@@ -2,26 +2,26 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on fenglei-blog</title>
-    <link>https://example.com/tags/</link>
+    <link>https://feng-blog.netlify.app/tags/</link>
     <description>Recent content in Tags on fenglei-blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>zh</language>
-    <lastBuildDate>Mon, 01 Aug 2022 18:24:33 +0800</lastBuildDate><atom:link href="https://example.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 01 Aug 2022 18:24:33 +0800</lastBuildDate><atom:link href="https://feng-blog.netlify.app/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>学习</title>
-      <link>https://example.com/tags/%E5%AD%A6%E4%B9%A0/</link>
+      <link>https://feng-blog.netlify.app/tags/%E5%AD%A6%E4%B9%A0/</link>
       <pubDate>Mon, 01 Aug 2022 18:24:33 +0800</pubDate>
       
-      <guid>https://example.com/tags/%E5%AD%A6%E4%B9%A0/</guid>
+      <guid>https://feng-blog.netlify.app/tags/%E5%AD%A6%E4%B9%A0/</guid>
       <description></description>
     </item>
     
     <item>
       <title>hugo</title>
-      <link>https://example.com/tags/hugo/</link>
+      <link>https://feng-blog.netlify.app/tags/hugo/</link>
       <pubDate>Mon, 01 Aug 2022 14:08:53 +0800</pubDate>
       
-      <guid>https://example.com/tags/hugo/</guid>
+      <guid>https://feng-blog.netlify.app/tags/hugo/</guid>
       <description></description>
     </item>
     

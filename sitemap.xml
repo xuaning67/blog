@@ -2,33 +2,33 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://example.com/posts/buildblog/</loc>
+    <loc>https://feng-blog.netlify.app/posts/buildblog/</loc>
     <lastmod>2022-08-01T18:24:33+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/</loc>
+    <loc>https://feng-blog.netlify.app/categories/</loc>
     <lastmod>2022-08-01T18:24:33+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/</loc>
+    <loc>https://feng-blog.netlify.app/</loc>
     <lastmod>2022-08-01T18:24:33+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/posts/</loc>
+    <loc>https://feng-blog.netlify.app/posts/</loc>
     <lastmod>2022-08-01T18:24:33+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/</loc>
+    <loc>https://feng-blog.netlify.app/tags/</loc>
     <lastmod>2022-08-01T18:24:33+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
+    <loc>https://feng-blog.netlify.app/categories/%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</loc>
     <lastmod>2022-08-01T18:24:33+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/%E5%AD%A6%E4%B9%A0/</loc>
+    <loc>https://feng-blog.netlify.app/tags/%E5%AD%A6%E4%B9%A0/</loc>
     <lastmod>2022-08-01T18:24:33+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/tags/hugo/</loc>
+    <loc>https://feng-blog.netlify.app/tags/hugo/</loc>
     <lastmod>2022-08-01T14:08:53+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/posts/first/</loc>
+    <loc>https://feng-blog.netlify.app/posts/first/</loc>
     <lastmod>2022-08-01T14:08:53+08:00</lastmod>
   </url><url>
-    <loc>https://example.com/posts/readme/</loc>
+    <loc>https://feng-blog.netlify.app/posts/readme/</loc>
   </url>
 </urlset>
