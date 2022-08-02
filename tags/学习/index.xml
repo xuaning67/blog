@@ -13,20 +13,7 @@
       <pubDate>Mon, 01 Aug 2022 14:08:53 +0800</pubDate>
       
       <guid>https://feng-blog.netlify.app/posts/buildblog/</guid>
-      <description>写在开头。准确的说这应该算是第三篇博客，第一篇随机生成的，第二篇用来测试的，这一篇就用来介绍博客是怎么来的。 环境 Hugo Git Github Netlify Hugo环境搭建 准备 Hugo下载地址：https://github.com/gohugoio/hugo/releases
-Git下载地址：https://git-scm.com/
-Hugo安装 为了后续省事，直接下载了extended版本 新建Hugo文件夹，下层新建bin和Sites文件夹，将下载好的exe文件放到bin中 配置环境变量，在path下添加bin目录 Git安装 下载，安装，完成
-安装测试 cmd下，hugo version和git version测试安装状况 如果有必要，重启计算机。
-本地搭建 初始化目录 进入Sites文件夹，右键执行git命令行 执行hugo new site test创建初始目录test任意取名。
-其中content目录为blog文件夹，themes为博客主题，config.toml为主题配置文件。 主题下载安装 主题网址: https://themes.gohugo.io
-根据个人喜好及需求随缘选择，因为有些主题需要用到个别环境
-根据主题内的要求进行下载
-为了主题的后续更新及优化，命令如下
-cd testgit initgit submodule add https://github.com/g1eny0ung/hugo-theme-dream.git themes/dream主题配置 编辑config.toml文件，一般在exampleSite文件夹中，将其移动到test目录下并根据个人需求进行修改。
-查看本地博客 在test下打开命令行，执行hugo server -D，得到IP地址，在浏览器中打开即可。
-新建博客 执行hugo new posts/xxx.md，xxx.md为采用markdown编辑的博客文件。撰写过程不赘述
-上述命令可用于再次创建自带模板的博客
-上传Github </description>
+      <description>&lt;p&gt;搭建博客步骤&lt;/p&gt;</description>
     </item>
     
   </channel>
