@@ -128,6 +128,23 @@
     <li><a href="#查看本地博客">查看本地博客</a></li>
     <li><a href="#新建博客">新建博客</a></li>
   </ul>
+
+  <ul>
+    <li><a href="#ssh连接">SSH连接</a>
+      <ul>
+        <li><a href="#生成ssh密钥">生成SSH密钥</a></li>
+      </ul>
+    </li>
+    <li><a href="#上传博客">上传博客</a>
+      <ul>
+        <li><a href="#手动build后续修改bug后再修改">手动build（后续修改bug后再修改）</a></li>
+        <li><a href="#修改分支">修改分支</a></li>
+        <li><a href="#合并readmemd">合并README.md</a></li>
+        <li><a href="#本地上传">本地上传</a></li>
+        <li><a href="#远程上传">远程上传</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
     </div>
     
@@ -225,6 +242,35 @@ git submodule add https://github.com/g1eny0ung/hugo-theme-dream.git themes/dream
 <p>执行<code>hugo new posts/xxx.md</code>，xxx.md为采用markdown编辑的博客文件。撰写过程不赘述<br>
 上述命令可用于再次创建自带模板的博客</p>
 <h1 id="上传github">上传Github</h1>
+<p>首先需要有个GitHub的账号，注册过程不再赘述&hellip;
+其次，新建一个仓库，既然是博客，那么权限就设计为公开就好。</p>
+<h2 id="ssh连接">SSH连接</h2>
+<p>为了方便后续的上传，使用SSH Key将Git和GitHub进行连接。</p>
+<h3 id="生成ssh密钥">生成SSH密钥</h3>
+<p>命令行下执行</p>
+<pre tabindex="0"><code>ssh-keygen -t rsa –C &#34;youselfemail@xxx.com&#34;（你自己的邮箱地址，推荐和注册github的邮箱保持一致）
+</code></pre><p>执行完成后，在系统/用户//.ssh下会出现<code>id_rsa</code>私钥和<code>id_rsa.pub</code>公钥两个文件，复制公钥中的内容。<br>
+在Github中进入<code>setting/SSH and GpG keys/new SSH keys</code>粘贴公钥内容，至此私钥和公钥匹配成功。保存。</p>
+<h2 id="上传博客">上传博客</h2>
+<p>此处有一个问题，网上的教程上在使用Netlify部署时，跳过了hugo命令，上传博客是需要将public目录下的文件进行上传，而我在执行部署时，因为hugo命令和上传public文件命令部署失败，跳过了这两个步骤，所以需要编写完博客后手动build文件。</p>
+<h3 id="手动build后续修改bug后再修改">手动build（后续修改bug后再修改）</h3>
+<p>编写完博客后，在test目录下执行以下命令</p>
+<pre tabindex="0"><code>Hugo
+cd public
+</code></pre><h3 id="修改分支">修改分支</h3>
+<p>Git的默认分支为master，Github的分支为main。所以将分支统一即可，下面的命令是将分支改为main。</p>
+<pre tabindex="0"><code>git config --global init.defaultBranch main
+</code></pre><h3 id="合并readmemd">合并README.md</h3>
+<p>新建Github仓库时初始化了一个README.md文件，需要先合并下来</p>
+<pre tabindex="0"><code>git pull --rebase origin main
+</code></pre><h3 id="本地上传">本地上传</h3>
+<pre tabindex="0"><code>git add .
+git commit -m &#34;上传博客文件&#34;
+</code></pre><h3 id="远程上传">远程上传</h3>
+<pre tabindex="0"><code>git push -u origin main
+</code></pre><p>之后只需要输入git push也可。最后，刷新GitHub页面即可查看。<br>
+后续再上传，可以从本地上传的步骤开始执行。</p>
+<h1 id="netlify部署">Netlify部署</h1>
       </article>
     </section>
 
