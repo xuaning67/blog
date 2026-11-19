@@ -3,14 +3,15 @@ title: "BuildBlog"
 date: 2022-08-01T14:08:53+08:00
 lastmod: 2022-08-01T14:08:53+08:00
 author: lfl
-avatar: /imgs/avatar.webp
-cover: cover.jpg
+cover:
+  image: cover.jpg
+  relative: true
+  alt: BuildBlog
 
 categories:
   - 博客搭建
 tags:
   - 学习
-nolastmod: true
 draft: false
 ---
 搭建博客步骤

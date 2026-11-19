@@ -1,6 +1,6 @@
 baseURL = "https://feng-blog.netlify.app/"
 title = "fenglei-blog"
-theme = "dream"
+theme = "PaperMod"
 
 defaultContentLanguage = "zh"
 locale = "zh-Hans"
@@ -11,55 +11,110 @@ enableEmoji = true
 [pagination]
   pagerSize = 8
 
+# PaperMod 搜索依赖首页生成的 index.json
+[outputs]
+  home = ["HTML", "RSS", "JSON"]
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
 
-    [markup.highlight]
-      codeFences = true
-      guessSyntax = true
-      hl_Lines = ""
-      lineNoStart = 1
-      lineNos = true
-      lineNumbersInTable = true
-      noClasses = false
-      tabWidth = 4
+  [markup.highlight]
+    codeFences = true
+    guessSyntax = true
+    lineNos = true
+    lineNumbersInTable = true
+    noClasses = false
+    tabWidth = 4
 
 [params]
-  # daisyUI 明暗主题，可选项见 https://daisyui.com/docs/themes/
-  lightTheme = "emerald"
-  darkTheme = "forest"
-
-  # 亮色模式保持干净的纯色背景，避免深色照片导致导航/页脚文字对比度不足
-  backgroundImageDark = "/imgs/background-dark.webp"
+  env = "production"
+  description = "lfl 的个人博客，用来记录一些乱七八糟的地方。"
+  keywords = ["lfl", "博客", "读书笔记", "SpringBoot", "Hugo"]
+  author = "lfl"
+  DateFormat = "2006年01月02日"
   images = ["/imgs/avatar.jpg"]
 
-  author = "lfl"
-  description = "lfl 的个人博客，用来记录一些乱七八糟的地方。"
-  avatar = "/imgs/avatar.webp"
-  headerTitle = "lfl"
-  motto = "用来记录一些乱七八糟的地方"
+  defaultTheme = "auto"
+  disableThemeToggle = false
 
-  email = "1246556916@qq.com"
-  siteStartYear = 2022
+  mainSections = ["posts"]
 
-  favicon = '<link rel="icon" href="/favicon.png" type="image/png">'
+  # 列表与文章页
+  ShowReadingTime = true
+  ShowWordCount = false
+  ShowShareButtons = true
+  ShowPostNavLinks = true
+  ShowBreadCrumbs = true
+  ShowCodeCopyButtons = true
+  ShowRssButtonInSectionTermList = true
+  ShowFullTextinRSS = false
 
-  rss = true
-  stickyNav = true
-  customSyntaxHighlighting = true
+  ShowToc = true
+  TocOpen = false
 
-  # 文章页
-  showTableOfContents = true
-  showSummaryCoverInPost = true
-  imageZoomableInPost = true
-  showPrevNextPost = true
+  [params.assets]
+    favicon = "/favicon.png"
+    favicon16x16 = "/favicon.png"
+    favicon32x32 = "/favicon.png"
+    apple_touch_icon = "/favicon.png"
+    safari_pinned_tab = "/safari-pinned-tab.svg"
+    disableFingerprinting = false
+    theme_color = "#f7f7f7"
+    msapplication_TileColor = "#f7f7f7"
 
-  [params.advanced]
-    customCSS = ["/css/custom.css"]
-    # customJS = []
+  # 顶部站点名 + 头像
+  [params.label]
+    text = "lfl"
+    icon = "imgs/avatar.webp"
+    iconHeight = 30
 
-  [params.experimental]
-    jsDate = true
-    jsDateFormat = "yyyy年MM月dd日"
+  [params.homeInfoParams]
+    Title = "你好，我是 lfl"
+    Content = "用来记录一些乱七八糟的地方。"
+    AlignSocialIconsTo = "left"
+
+  [params.cover]
+    responsiveImages = true
+    linkFullImages = true
+
+  [[params.socialIcons]]
+    name = "email"
+    url = "mailto:1246556916@qq.com"
+
+[[menu.main]]
+  identifier = "posts"
+  name = "文章"
+  url = "/posts/"
+  weight = 10
+
+[[menu.main]]
+  identifier = "archives"
+  name = "归档"
+  url = "/archives/"
+  weight = 20
+
+[[menu.main]]
+  identifier = "categories"
+  name = "分类"
+  url = "/categories/"
+  weight = 30
+
+[[menu.main]]
+  identifier = "tags"
+  name = "标签"
+  url = "/tags/"
+  weight = 40
+
+[[menu.main]]
+  identifier = "search"
+  name = "搜索"
+  url = "/search/"
+  weight = 50
+
+[[menu.main]]
+  identifier = "about"
+  name = "关于"
+  url = "/about/"
+  weight = 60

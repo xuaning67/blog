@@ -1,10 +1,10 @@
 # fenglei-blog
 
-个人博客源码，使用 [Hugo](https://gohugo.io/) + [Dream](https://github.com/g1eny0ung/hugo-theme-dream) 主题构建，部署在 [Netlify](https://www.netlify.com/)。
+个人博客源码，使用 [Hugo](https://gohugo.io/) + [PaperMod](https://github.com/adityatelange/hugo-PaperMod) 构建，部署在 [Netlify](https://www.netlify.com/)。
 
 - 线上地址：https://feng-blog.netlify.app/
 - Hugo：0.160.1 extended（见 `netlify.toml`）
-- 主题：Dream v3.19.1（`themes/dream/`，Tailwind + daisyUI + Alpine.js）
+- 主题：PaperMod（`themes/PaperMod/`，零 JS 框架依赖，内置搜索）
 
 ## 本地开发
 
@@ -22,7 +22,7 @@ hugo --gc --minify
 
 ## 写文章
 
-文章使用 page bundle，图片和正文放在同一目录：
+文章使用 page bundle，封面和正文放在同一目录，Hugo 会自动生成响应式图片：
 
 ```sh
 hugo new posts/my-post/index.md
@@ -31,23 +31,39 @@ hugo new posts/my-post/index.md
 ```text
 content/posts/my-post/
 ├── index.md
-└── cover.jpg   # front matter 中写 cover: cover.jpg，Hugo 会自动转 webp
+└── cover.jpg
 ```
 
-常用 front matter 字段见 `archetypes/posts/index.md`。`<!--more-->` 之前的内容会作为列表页摘要。
+front matter（注意 `cover` 是对象，不是字符串）：
+
+```yaml
+---
+title: 文章标题
+date: 2024-01-01T10:00:00+08:00
+author: lfl
+cover:
+  image: cover.jpg
+  alt: 封面说明
+categories: [分类]
+tags: [标签]
+draft: false
+---
+```
+
+`<!--more-->` 之前的内容会作为列表页摘要。
 
 ## 目录结构
 
 ```text
-config.toml          # 站点与主题参数
-content/posts/       # 文章（page bundle）
-content/about/       # 关于页，子页面会显示在翻面/关于页
-content/search/      # 搜索页（noindex）
-data/socials.toml    # 关于页的社交链接
-assets/js/grid.js    # 覆盖主题的瀑布流脚本（响应式重排）
-layouts/robots.txt   # 带 Sitemap 的 robots.txt
-netlify.toml         # 构建命令、Hugo 版本、缓存与安全响应头
-themes/dream/        # Dream v3.19.1
+config.toml              # 站点、菜单、PaperMod 参数
+content/posts/           # 文章（page bundle）
+content/about/index.md   # 关于页
+content/archives.md      # 归档页（layout: archives）
+content/search.md        # 搜索页（layout: search）
+assets/css/extended/     # 自定义样式（在主题样式之后加载）
+layouts/robots.txt       # 带 Sitemap 的 robots.txt
+netlify.toml             # 构建命令、Hugo 版本、缓存与安全响应头
+themes/PaperMod/         # PaperMod 主题
 ```
 
 ## 部署
@@ -56,12 +72,12 @@ themes/dream/        # Dream v3.19.1
 
 ## 主题定制
 
-主题产物（`themes/dream/assets/css/output.css`、`assets/js/*`）是预编译并提交的。如需改样式或脚本：
+优先使用 PaperMod 自带参数（见 `config.toml` 和[文档](https://github.com/adityatelange/hugo-PaperMod/wiki)）。
+需要额外样式时放到 `assets/css/extended/*.css`；需要覆盖模板时在根目录 `layouts/` 下建同名文件，不要改 `themes/PaperMod/`。
+
+升级主题：
 
 ```sh
-cd themes/dream
-pnpm install
-pnpm run build
+git -C themes/PaperMod pull   # 如果主题目录是独立 clone
+# 或重新下载官方压缩包覆盖 themes/PaperMod/
 ```
-
-优先级：项目根目录的 `assets/` > 主题的 `assets/`，因此小改动建议直接放在根目录 `assets/` 下覆盖，不要修改 `themes/dream/`。

@@ -4,7 +4,6 @@
 
 [build.environment]
   HUGO_VERSION = "0.160.1"
-  NODE_VERSION = "20"
 
 [[headers]]
   for = "/*"
@@ -14,22 +13,19 @@
     Referrer-Policy = "strict-origin-when-cross-origin"
     Permissions-Policy = "camera=(), microphone=(), geolocation=()"
 
+# PaperMod 的 CSS/JS 带内容指纹，可以长期缓存
 [[headers]]
-  for = "/css/*"
+  for = "/assets/*"
   [headers.values]
-    Cache-Control = "public, max-age=86400"
-
-[[headers]]
-  for = "/js/*"
-  [headers.values]
-    Cache-Control = "public, max-age=86400"
+    Cache-Control = "public, max-age=31536000, immutable"
 
 [[headers]]
   for = "/imgs/*"
   [headers.values]
     Cache-Control = "public, max-age=2592000"
 
+# Hugo 处理后的封面图文件名带哈希
 [[headers]]
-  for = "/posts/*/cover_hu_*"
+  for = "/posts/*/cover_*"
   [headers.values]
     Cache-Control = "public, max-age=31536000, immutable"

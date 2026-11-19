@@ -1,4 +1,3 @@
 ---
-title: 归档
-groupLayout: "2006"
+title: 文章
 ---

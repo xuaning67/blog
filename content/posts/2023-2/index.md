@@ -3,16 +3,10 @@ title: SpringBoot
 date: 2022-08-04T10:45:13+08:00
 lastmod: 2022-08-04T10:45:13+08:00
 author: lfl
-avatar: /imgs/avatar.webp
-cover: cover.jpg
-# images:
-#   - /img/cover.jpg
-#categories:
- # - category1
-#tags:
- # - tag1
- # - tag2
-# nolastmod: true
+cover:
+  image: cover.jpg
+  relative: true
+  alt: SpringBoot
 draft: false
 
 ---

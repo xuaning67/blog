@@ -1,0 +1,18 @@
+/* 列表页封面限制高度，避免整屏只看到一张封面图 */
+.post-entry .entry-cover img {
+  width: 100%;
+  max-height: 240px;
+  object-fit: cover;
+  object-position: center 45%;
+}
+
+/* 暗色模式下代码行号对比度（Chroma 默认值低于 WCAG AA） */
+html[data-theme="dark"] .chroma .lnt,
+html[data-theme="dark"] .chroma .ln {
+  color: #9aa4b8;
+}
+
+/* 暗色下次级文字（标签、上下篇标题等）对比度略低于 AA */
+:root[data-theme="dark"] {
+  --secondary: #b3b4b6;
+}
