@@ -1,0 +1,24 @@
+/* 提高次级文字（站点口号、日期等）的对比度，满足 WCAG AA */
+.text-base-content\/60 {
+  color: var(--color-base-content);
+}
+
+@supports (color: color-mix(in lab, red, red)) {
+  .text-base-content\/60 {
+    color: color-mix(in oklab, var(--color-base-content) 85%, transparent);
+  }
+}
+
+/* 次级文本中的链接需要下划线区分，不能只靠颜色 */
+.text-base-content\/60 a {
+  text-decoration: underline;
+}
+
+/* Chroma 默认行号颜色低于 WCAG AA，这里提亮/加深 */
+.chroma .lnt {
+  color: #5f6875;
+}
+
+html.dark .chroma .lnt {
+  color: #9ca3af;
+}

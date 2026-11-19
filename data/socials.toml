@@ -1,0 +1,4 @@
+# 头像之外的社交链接，图标名见 https://ionic.io/ionicons
+socials = [
+  { href = "https://www.pexels.com/zh-cn/@minan1398", target = "_blank", icon = "image-outline", title = "背景图片作者" },
+]

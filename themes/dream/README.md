@@ -1,113 +1,107 @@
 # 🌱 hugo-theme-dream
 
-![GitHub release (latest by date)](https://img.shields.io/github/v/release/g1eny0ung/hugo-theme-dream)
-![Hugo min version](https://img.shields.io/badge/hugo--min--version-0.57.2-important)
-![GitHub](https://img.shields.io/github/license/g1eny0ung/hugo-theme-dream)
+![GitHub Release](https://img.shields.io/github/v/release/g1eny0ung/hugo-theme-dream)
+![GitHub License](https://img.shields.io/github/license/g1eny0ung/hugo-theme-dream)
 
-- [The next version is out](#the-next-version-is-out)
-- [Note After v1.1.0](#note-after-v110)
-- [Major update in 2019-11-10](#major-update-in-2019-11-10)
-- [Intro](#intro)
-- [Documentation](#documentation)
-- [Installation](#installation)
-- [Example](#example)
-- [Tutorials from community](#tutorials-from-community)
-- [Publish](#publish)
+> [!IMPORTANT]
+> This branch contains Dream v3.
+>
+> If you use v2.x, see the [v2 branch](https://github.com/g1eny0ung/hugo-theme-dream/tree/v2) and its [documentation](https://hugo-theme-dream-docs-v2.netlify.app/).
 
-## The next version is out
+- [About Dream](#about-dream)
+- [Get started](#get-started)
+- [Examples](#examples)
+- [Develop locally](#develop-locally)
+- [Publish your site](#publish-your-site)
 
-> If you still want to use the old version, you can check out the branch to `release-1.6`.
+## About Dream
 
-The new version brings some new design elements and bug fixes. When it stabilizes, it will be released as `v2.0.0`.
+Dream is a [Hugo](https://gohugo.io/) theme. I build it for [my blog](https://g1en.site).
 
-All changes will be committed to the `master` branch. You can check the screenshot below to see the rough interface changes.
+Dream displays posts in a masonry layout and has a flippable About page.
+It supports light and dark mode out of the box.
 
-For more detail, please refer to the [Release v2.0.0-beta](https://github.com/g1eny0ung/hugo-theme-dream/releases/tag/v2.0.0-beta).
+![Dream screenshot](images/screenshot.png)
 
-## Note After v1.1.0
+For a single-column layout focused on reading and writing, use [Zen mode](https://hugo-theme-dream.g1en.site/zen-mode).
 
-> It's needed to set the **`about`** folder to **`Headless Bundle`**.
+![Zen mode screenshot](docs/public/images/zen-mode.png)
 
-Related docs:
+## Get started
 
-<https://g1en.site/hugo-theme-dream/#/quick-start?id=add-quotabout-mequot>
+Use Hugo Extended. Follow the [Quick Start](https://hugo-theme-dream.g1en.site/) to install Dream in your site and create your first post.
 
-<https://g1en.site/hugo-theme-dream/#/about-page>
+Set `theme = "dream"` in your site's `hugo.toml` when you install the theme under `themes/dream`.
+Use [hugo.example.toml](hugo.example.toml) as the configuration reference.
+The [documentation](https://hugo-theme-dream.g1en.site/) covers About pages, search, comments, customization, and other options.
 
-<https://gohugo.io/content-management/page-bundles/#headless-bundle>
+Dream includes prebuilt CSS and JavaScript. You need Node.js and pnpm only to rebuild theme assets or work on the documentation site.
 
-## Major update in 2019-11-10
+## Examples
 
-I completely rewrite the page layout to [masonry layout](https://masonry.desandro.com/).
+- [My blog](https://g1en.site) and its [source code](https://github.com/g1eny0ung/blog)
+- [A demo of Zen mode](https://g1en-site-zen-mode-preview.netlify.app/)
 
-Correspondingly, the configuration (`config.toml`) also has some breaking changes.
+## Develop locally
 
-Please refer to the documentation for details.
+Use Node.js 24 and pnpm. The root theme package and the `docs/` package have separate dependencies and lockfiles.
+Reuse your existing shared dependency caches.
 
-If you have other problems, you can also ask in the [issues](https://github.com/g1eny0ung/hugo-theme-dream/issues).
+### Build theme assets
 
-## Intro
+Run these commands from the repository root:
 
-Dream is a [Hugo](https://gohugo.io/) theme. I build it for [my blog](http://g1en.site).
-
-The main features are **full page flip** and **masonry layout views**.~
-
-Dream also support **light mode** and **dark mode** out of the box.
-
-demo: [https://themes.gohugo.io/theme/hugo-theme-dream/](https://themes.gohugo.io/theme/hugo-theme-dream/)
-
-![https://raw.githubusercontent.com/g1eny0ung/hugo-theme-dream/master/images/screenshot.png](https://raw.githubusercontent.com/g1eny0ung/hugo-theme-dream/master/images/screenshot.png)
-
-All tags of this theme:
-
-- flip
-- masonry layout
-- i18n
-- blog
-- google-analytics
-- disqus
-- responsive
-- copyright
-- avatar
-- motto
-- social links
-- creative
-- personal
-- light mode
-- dark mode
-- search
-
-## Documentation
-
-<https://g1en.site/hugo-theme-dream>
-
-## Installation
-
-Go into your blog folder and:
-
-```bash
-cd themes
-git clone https://github.com/g1eny0ung/hugo-theme-dream.git dream
+```sh
+pnpm install --frozen-lockfile
+pnpm run build
 ```
 
-Then open your `config.toml` and edit to `theme = "dream"` and save.
+Edit `src/input.css` for styles and `src/js/` for browser behavior.
+The build writes tracked output to `assets/css/output.css` and `assets/js/`.
+Include the generated files with source changes.
+Template changes that affect Tailwind or daisyUI classes also need a CSS rebuild.
 
-## Example
+To rebuild only one asset type, use `pnpm run css` or `pnpm run js`.
+To rebuild assets as you edit, run:
 
-[My Blog](https://g1en.site)
+```sh
+pnpm run watch
+```
 
-[My Blog's Source Code](https://github.com/g1eny0ung/blog)
+### Preview the theme
 
-## Tutorials from community
+Use a separate Hugo site with content and configure it to load this checkout as its theme.
+This repository is not a standalone blog, and the documentation site does not preview Hugo templates.
+See the [Quick Start](https://hugo-theme-dream.g1en.site/) for site setup.
 
-### Chinese
+From the Hugo site directory, run:
 
-- [使用 Hugo + Dream 主题构建个人博客](https://guole.fun/posts/hugo-blog/)
+```sh
+hugo server -D
+```
 
-## Publish
+The `-D` flag includes draft posts. Keep the asset watcher running when you edit theme styles or JavaScript.
 
-View [Hosting & Deployment](https://gohugo.io/hosting-and-deployment/).
+### Run the documentation site
+
+Use the pnpm version declared in `docs/package.json`.
+From the repository root, run:
+
+```sh
+cd docs
+pnpm install --frozen-lockfile
+pnpm run dev
+```
+
+Edit user guides in `docs/content/`.
+Run `pnpm run build` from `docs/` to build the static documentation site in `docs/out/`.
+
+## Publish your site
+
+See [Hosting & Deployment](https://gohugo.io/hosting-and-deployment/).
 
 ## License
 
-MIT © [g1eny0ung](https://github.com/g1eny0ung)
+Hugo Theme Dream is licensed under the [MIT License](LICENSE).
+
+Author: [g1eny0ung](https://github.com/g1eny0ung).

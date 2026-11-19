@@ -1,52 +1,89 @@
-$(document).ready(() => {
-  function setClassName() {
-    return (
-      window.backgroundDark || window.backgroundImageDark
-        ? localStore.getItem('hugo-theme-dream-is-dark') === 'y'
-        : window.darkNav
-    )
-      ? 'os-theme-light'
-      : 'os-theme-dark'
-  }
+document.addEventListener('alpine:init', () => {
+  Alpine.store('darkMode', {
+    init() {
+      const isDark = window.localStorage.getItem('hugo-theme-dream-is-dark')
 
-  const osInstance = $('body')
-    .overlayScrollbars({
-      className: setClassName(),
-      scrollbars: {
-        autoHide: 'scroll',
-        clickScrolling: true,
-      },
-    })
-    .overlayScrollbars()
+      this.on = isDark || 'auto'
+      this.systemDark = this.mql.matches
 
-  if (window.fixedNav) {
-    const nav = $('.dream-nav')
+      this.mql.addEventListener('change', (event) => {
+        this.systemDark = event.matches
+        this.changeSyntaxHighlightingTheme()
+        this.setThemeForUtterances()
+      })
 
-    osInstance.options('callbacks.onScroll', function () {
-      const y = this.scroll().position.y
-      const fake = $('.fake-dream-nav')
+      window.addEventListener('message', (event) => {
+        const utterances = document.querySelector('iframe.utterances-frame')
 
-      if (y > 0) {
-        nav.addClass('fixed').css('background', window.isDark === 'y' ? window.backgroundDark : window.background)
-        $('.dream-single-aside').css('top', 54)
-        if (!fake.length) {
-          $('<div class="fake-dream-nav" />').css('height', 54).insertBefore(nav)
+        if (
+          event.origin === 'https://utteranc.es' &&
+          event.source === utterances?.contentWindow &&
+          event.data?.type === 'resize'
+        ) {
+          this.setThemeForUtterances()
         }
+      })
+
+      this.setThemeForUtterances()
+    },
+
+    mql: window.matchMedia('(prefers-color-scheme: dark)'),
+    on: 'n',
+    systemDark: false,
+
+    isDark() {
+      return this.on === 'auto' ? this.systemDark : this.on === 'y'
+    },
+    theme() {
+      return this.isDark() ? window.darkTheme : window.lightTheme
+    },
+
+    iconMap: {
+      n: 'sunny',
+      y: 'moon',
+      auto: 'desktop',
+    },
+    icon() {
+      return this.iconMap[this.on]
+    },
+
+    toggle(status) {
+      this.on = status
+
+      if (status === 'auto') {
+        window.localStorage.removeItem('hugo-theme-dream-is-dark')
       } else {
-        nav.removeClass('fixed').css('background', 'unset')
-        $('.dream-single-aside').css('top', 0)
-        fake.remove()
+        window.localStorage.setItem('hugo-theme-dream-is-dark', status)
       }
-    })
-  }
 
-  window.overlayScrollbarsInstance = osInstance
+      this.setThemeForUtterances()
+      this.changeSyntaxHighlightingTheme()
+    },
 
-  function initFilp() {
-    $('.dream-flip-toggle').click(() => {
-      $('.flip-container').toggleClass('flip-it')
-    })
-  }
+    changeSyntaxHighlightingTheme() {
+      const stylesheet = document.querySelector('link[data-custom-syntax-highlighting]')
 
-  initFilp()
+      if (stylesheet) {
+        const customSyntaxHighlightingUrl = this.isDark()
+          ? window.customSyntaxHighlighting.dark
+          : window.customSyntaxHighlighting.light
+
+        stylesheet.setAttribute('href', customSyntaxHighlightingUrl)
+      }
+    },
+
+    setThemeForUtterances() {
+      const utterances = document.querySelector('iframe.utterances-frame')
+
+      if (utterances) {
+        utterances.contentWindow.postMessage(
+          {
+            type: 'set-theme',
+            theme: this.isDark() ? 'github-dark' : 'github-light',
+          },
+          'https://utteranc.es'
+        )
+      }
+    },
+  })
 })

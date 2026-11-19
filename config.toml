@@ -1,30 +1,21 @@
-baseurl = "https://feng-blog.netlify.app/"
-languageCode = "zh-Hans"
-defaultContentLanguage = "zh"
+baseURL = "https://feng-blog.netlify.app/"
 title = "fenglei-blog"
 theme = "dream"
 
-copyright = '<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" /></a><br />本作品采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可。<br /><br />背景使用了 <a href="https://www.pexels.com/zh-cn/" target="_blank">Pexels</a> 上 <a href="https://www.pexels.com/zh-cn/@minan1398" target="_blank">Min An</a> 拍摄的<a href="https://www.pexels.com/zh-cn/photo/1454794/" target="_blank">图片</a>。'
-
-# googleAnalytics = ""
-
-# disqusShortname = ""
-
-enableRobotsTXT = true
-enableEmoji = true    
+defaultContentLanguage = "zh"
+locale = "zh-Hans"
 hasCJKLanguage = true
+enableRobotsTXT = true
+enableEmoji = true
 
-[outputs]
-  home = ["HTML", "RSS", "JSON"]
+[pagination]
+  pagerSize = 8
 
-# https://gohugo.io/news/0.60.0-relnotes/
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
       unsafe = true
-      # 缺省值为false，值为true时，md文件可使用html和js语法monokai
 
-    # 以下设置代码高亮样式
     [markup.highlight]
       codeFences = true
       guessSyntax = true
@@ -32,83 +23,43 @@ hasCJKLanguage = true
       lineNoStart = 1
       lineNos = true
       lineNumbersInTable = true
-      noClasses = true
-      style = "dracula"
+      noClasses = false
       tabWidth = 4
 
 [params]
-  background = "#f7f7f7"
-  backgroundImage = "https://img0.baidu.com/it/u=4219975020,1536153350&fm=253&fmt=auto&app=120&f=JPEG?w=1422&h=800"
-  linkColor = "seagreen"
+  # daisyUI 明暗主题，可选项见 https://daisyui.com/docs/themes/
+  lightTheme = "emerald"
+  darkTheme = "forest"
 
-  # dark mode
-  defaultDark = true
-  backgroundDark = "black"
-  # backgroundImageDark = "https://img1.baidu.com/it/u=1997790838,2966053964&fm=253&fmt=auto&app=138&f=JPEG?w=1000&h=500"
-  backgroundImageDark = "https://img-blog.csdnimg.cn/c6167dc3f37b48a4ba9ededf35d1b11f.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBAR0lTZXJfVEw=,size_20,color_FFFFFF,t_70,g_se,x_16"
-  darkLinkColor = "darkseagreen"
-  darkNav = true
-  dark404 = true
+  # 亮色模式保持干净的纯色背景，避免深色照片导致导航/页脚文字对比度不足
+  backgroundImageDark = "/imgs/background-dark.webp"
+  images = ["/imgs/avatar.jpg"]
 
   author = "lfl"
-  # description = ""
-  avatar = "http://p3-tt.byteimg.com/img/tos-cn-i-qvj2lq49k0/1a7934409a644f428bb9577b5fe5d34b~tplv-resize:600:0.jpg"
+  description = "lfl 的个人博客，用来记录一些乱七八糟的地方。"
+  avatar = "/imgs/avatar.webp"
   headerTitle = "lfl"
   motto = "用来记录一些乱七八糟的地方"
-  # maxTags = 5
-  # categoriesLimitInHeader = 6 # deprecated
-  # headerBottomText = "" # deprecated
-
-  # footerBottomText = ""
-
-  rss = true
-
-  # utterancesRepo = ""
-
-  # valine = true
-  # LEANCLOUD_APP_ID = ""
-  # LEANCLOUD_APP_KEY = ""
-  # VALINE_LANGUAGE = ""
 
   email = "1246556916@qq.com"
-  # twitter = ""
-  # facebook = ""
-  # instagram = ""
-  # mastodon = ""
-  # linkedin = ""
-  # github = ""
-  # stackoverflow = ""
-  # codepen = ""
-
   siteStartYear = 2022
 
-  # favicon = "/favicon.ico"
+  favicon = '<link rel="icon" href="/favicon.png" type="image/png">'
 
-  # highlightjs = true
-  # highlightjsCDN = "https://cdn.jsdelivr.net/gh/highlightjs/cdn-release/build/highlight.min.js"
-  # highlightjsExtraLanguages = ["ocaml"]
-  # highlightjsTheme = "gruvbox-light"
-  # highlightjsThemeDark = "gruvbox-dark"
+  rss = true
+  stickyNav = true
+  customSyntaxHighlighting = true
 
-  # search
-  enableSearch = true
-
-  # options
+  # 文章页
+  showTableOfContents = true
   showSummaryCoverInPost = true
-  # hasTwitterEmbed = true
-  # reversePostAndAside = true
-  # shareInAside = true
-  # fixedNav = true
-  # collapsibleTags = true
-  # collapseBySummary = true
-  # disableFlip = true
-  # hideBackSocialLinks = true
+  imageZoomableInPost = true
+  showPrevNextPost = true
 
-  # [params.advanced]
-  #   customCSS = ["css/custom.css"]
-  #   customJSBefore = []
-  #   customJS = []
+  [params.advanced]
+    customCSS = ["/css/custom.css"]
+    # customJS = []
 
   [params.experimental]
     jsDate = true
-    sDateFormat = "yyyy年MM月dd日"
+    jsDateFormat = "yyyy年MM月dd日"

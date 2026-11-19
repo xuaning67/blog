@@ -1,15 +1,17 @@
-$(document).ready(() => {
-  function initGrid() {
-    const $grid = $('.dream-grid').masonry({
+function initGrid() {
+  if (typeof Masonry !== 'function' || typeof imagesLoaded !== 'function') {
+    return
+  }
+
+  document.querySelectorAll('.dream-grid').forEach((grid) => {
+    const msnry = new Masonry(grid, {
       itemSelector: '.dream-column',
     })
 
-    $grid.imagesLoaded().progress(() => $grid.masonry('layout'))
+    imagesLoaded(grid).on('progress', () => {
+      msnry.layout()
+    })
+  })
+}
 
-    if (window.hasTwitterEmbed) {
-      window.twttr.ready((twttr) => twttr.events.bind('loaded', () => $grid.masonry('layout')))
-    }
-  }
-
-  initGrid()
-})
+initGrid()
